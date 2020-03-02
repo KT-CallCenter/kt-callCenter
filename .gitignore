@@ -4,6 +4,10 @@ target/**
 !**/src/main/**
 !**/src/test/**
 
+### Styles ###
+*.sass
+!*.css
+
 ### STS ###
 .apt_generated
 .classpath
