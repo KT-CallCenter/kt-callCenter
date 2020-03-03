@@ -38,6 +38,7 @@
             </#if>
         </table>
         <a href="/generate" class="button">Генерировать</a>
+        <a href="/employees">Добавить сотрудника</a>
     </div>
 </div>
 </body>
