@@ -1,11 +1,29 @@
 package esdp.ktcallcenter.domain.shift;
 
-import lombok.AllArgsConstructor;
+import esdp.ktcallcenter.domain.employee.Employee;
+import lombok.*;
 
-public enum Shift {
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
-    SHIFT1("Смена1"), SHIFT2("Смена2");
 
-    Shift(String name) {
-    }
+@Data
+@Table(name = "shifts")
+@Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
+public class Shift {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotBlank
+    @Column
+    private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("id")
+    private Employee employee;
+
 }

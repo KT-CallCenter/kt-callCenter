@@ -1,9 +1,24 @@
 package esdp.ktcallcenter.domain.region;
 
-public enum Region {
+import lombok.*;
 
-    ONTUSTIK("Онтустик"), BATYS("Батыс"), SOLTUSTIK("Cолтустик"), SHYGYS("Шыгыс");
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
-    Region(String name) {
-    }
+@Data
+@Table(name = "regions")
+@Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
+public class Region {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotBlank
+    @Column
+    private String name;
+
 }

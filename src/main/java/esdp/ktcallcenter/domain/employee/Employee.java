@@ -7,6 +7,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Table(name = "employees")
@@ -27,13 +29,13 @@ public class Employee {
     @Column
     private String lastName;
 
-    @Column
-    private Shift shift;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "employee")
+    private List<Shift> shifts = new ArrayList<>();
 
-    @Column
-    private Language language;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "employee")
+    private List<Language> languages= new ArrayList<>();
 
-    @Column
+    @OneToOne(fetch = FetchType.LAZY)
     private Region region;
 
 }
