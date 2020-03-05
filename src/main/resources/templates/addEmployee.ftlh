@@ -8,7 +8,7 @@
     <title>add</title>
 </head>
 <body>
-<form action="/employees/addEmployee" method="post">
+<form action="/employees/add" method="post">
     <input type="text" name="firstName" placeholder="firstName">
     <input type="text" name="lastName" placeholder="lastName">
 
@@ -37,6 +37,19 @@
 
 <button type="submit"> Добавить </button>
 </form>
+<div>
+    <#if errors?? >
+        <p>Входные данные с ошибками!</p>
+        <#list errors as fieldError>
+            <p>${fieldError.field} - ${fieldError.defaultMessage!'-- no message --'}</p>
+        </#list>
+    </#if>
+</div>
+<div>
+    <#if err?? >
+        <p>${err}</p>
+    </#if>
+</div>
 
 </body>
 </html>

@@ -7,6 +7,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +23,12 @@ public class Employee {
     private Integer id;
 
     @NotBlank
+    @NotEmpty
     @Column
     private String firstName;
 
     @NotBlank
+    @NotEmpty
     @Column
     private String lastName;
 

@@ -10,6 +10,9 @@ private final EmployeeRepository employeeRepository;
 
 
     public void addEmployee(String firstName, String lastName) {
+         if (employeeRepository.existsByFirstNameAndLastName(firstName,lastName)){
+             throw new EmployeeAlreadyExistException();
+         }
         Employee employee = Employee.builder().firstName(firstName).lastName(lastName).build();
         employeeRepository.save(employee);
     }
