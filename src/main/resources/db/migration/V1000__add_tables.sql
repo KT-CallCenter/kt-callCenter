@@ -1,10 +1,3 @@
-create table contracts
-(
-    id   int auto_increment
-        primary key,
-    name varchar(255) null
-);
-
 create table languages
 (
     id   int auto_increment
@@ -30,17 +23,6 @@ create table employees
         foreign key (region_id) references regions (id)
 );
 
-create table employee_contract
-(
-    employee_id int not null,
-    contract_id int not null,
-    primary key (employee_id, contract_id),
-    constraint FKh3kdauk0g6lf6r0ac2xxl7c81
-        foreign key (employee_id) references employees (id),
-    constraint FKheihomg89qcgxbpkmui8mtoqf
-        foreign key (contract_id) references contracts (id)
-);
-
 create table employee_language
 (
     employee_id int not null,
@@ -50,5 +32,23 @@ create table employee_language
         foreign key (language_id) references languages (id),
     constraint FKslleotm3pjfpw8ikhpg9houcx
         foreign key (employee_id) references employees (id)
+);
+
+create table shifts
+(
+    id   int auto_increment
+        primary key,
+    name varchar(255) null
+);
+
+create table employee_shift
+(
+    employee_id int not null,
+    shift_id    int not null,
+    primary key (employee_id, shift_id),
+    constraint FK1eyd9qwku8re162ja50al6pap
+        foreign key (employee_id) references employees (id),
+    constraint FKcex2xfqg95o9m15hjju7rrp9
+        foreign key (shift_id) references shifts (id)
 );
 

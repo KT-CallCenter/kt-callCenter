@@ -2,7 +2,7 @@ package esdp.ktcallcenter.domain.employee;
 
 import esdp.ktcallcenter.domain.language.Language;
 import esdp.ktcallcenter.domain.region.Region;
-import esdp.ktcallcenter.domain.contract.Contract;
+import esdp.ktcallcenter.domain.shift.Shift;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,8 +10,6 @@ import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 import javax.validation.constraints.NotEmpty;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Table(name = "employees")
@@ -36,11 +34,11 @@ public class Employee {
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
-            name = "employee_contract",
+            name = "employee_shift",
             joinColumns = {@JoinColumn(name = "employee_id")},
-            inverseJoinColumns = {@JoinColumn(name = "contract_id")}
+            inverseJoinColumns = {@JoinColumn(name = "shift_id")}
     )
-    private Set<Contract> contracts = new HashSet<>();
+    private Set<Shift> shifts = new HashSet<>();
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(

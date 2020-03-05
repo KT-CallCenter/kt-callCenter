@@ -1,4 +1,4 @@
-package esdp.ktcallcenter.domain.contract;
+package esdp.ktcallcenter.domain.shift;
 
 import esdp.ktcallcenter.domain.employee.Employee;
 import lombok.*;
@@ -10,12 +10,12 @@ import java.util.Set;
 
 
 @Data
-@Table(name = "contracts")
+@Table(name = "shifts")
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
-public class Contract {
+public class Shift {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,7 +24,7 @@ public class Contract {
     @Column
     private String name;
 
-    @ManyToMany(mappedBy = "contracts")
+    @ManyToMany(mappedBy = "shifts")
     private Set<Employee> employees = new HashSet<>();
 
 }

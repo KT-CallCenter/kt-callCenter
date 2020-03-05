@@ -20,7 +20,7 @@ public final class DataReader {
     private static List<String> regions;
     private static List<EmployeeData> employees;
 
-    public static List<String> getContracts() {
+    public static List<String> getShifts() {
         return readStrings(Paths.get("data", "list-shifts"));
     }
 
