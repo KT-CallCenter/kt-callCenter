@@ -2,13 +2,13 @@ package esdp.ktcallcenter.domain.employee;
 
 import esdp.ktcallcenter.domain.language.Language;
 import esdp.ktcallcenter.domain.region.Region;
-import esdp.ktcallcenter.domain.shift.Shift;
+import esdp.ktcallcenter.domain.contract.Contract;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Table(name = "employees")
@@ -29,13 +29,23 @@ public class Employee {
     @Column
     private String lastName;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "employee")
-    private List<Shift> shifts = new ArrayList<>();
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "employee_contract",
+            joinColumns = {@JoinColumn(name = "employee_id")},
+            inverseJoinColumns = {@JoinColumn(name = "contract_id")}
+    )
+    private Set<Contract> contracts = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "employee")
-    private List<Language> languages= new ArrayList<>();
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "employee_language",
+            joinColumns = {@JoinColumn(name = "employee_id")},
+            inverseJoinColumns = {@JoinColumn(name = "language_id")}
+    )
+    private Set<Language> languages = new HashSet<>();
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Region region;
 
 }

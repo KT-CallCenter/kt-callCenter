@@ -15,12 +15,12 @@ import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class DataReader {
-    private static List<String> shifts;
+    private static List<String> contracts;
     private static List<String> languages;
     private static List<String> regions;
     private static List<EmployeeData> employees;
 
-    public static List<String> getShifts() {
+    public static List<String> getContracts() {
         return readStrings(Paths.get("data", "list-shifts"));
     }
 

@@ -1,9 +1,9 @@
-package esdp.ktcallcenter.domain.shift;
+package esdp.ktcallcenter.domain.contract;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface ShiftRepository extends JpaRepository<Shift, Integer> {
+public interface ContractRepository extends JpaRepository<Contract, Integer> {
 }

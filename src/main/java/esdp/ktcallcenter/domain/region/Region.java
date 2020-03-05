@@ -1,9 +1,12 @@
 package esdp.ktcallcenter.domain.region;
 
+import esdp.ktcallcenter.domain.employee.Employee;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Table(name = "regions")
@@ -21,4 +24,6 @@ public class Region {
     @Column
     private String name;
 
+    @OneToMany(mappedBy = "region")
+    private List<Employee> employees = new ArrayList<>();
 }
