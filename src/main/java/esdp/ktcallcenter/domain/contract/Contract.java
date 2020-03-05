@@ -1,19 +1,21 @@
-package esdp.ktcallcenter.domain.shift;
+package esdp.ktcallcenter.domain.contract;
 
 import esdp.ktcallcenter.domain.employee.Employee;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Data
-@Table(name = "shifts")
+@Table(name = "contracts")
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
-public class Shift {
+public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,8 +24,7 @@ public class Shift {
     @Column
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("id")
-    private Employee employee;
+    @ManyToMany(mappedBy = "contracts")
+    private Set<Employee> employees = new HashSet<>();
 
 }

@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Table(name = "languages")
@@ -22,8 +24,6 @@ public class Language {
     @Column
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("id")
-    private Employee employee;
-
+    @ManyToMany(mappedBy = "languages")
+    private Set<Employee> employees = new HashSet<>();
 }
