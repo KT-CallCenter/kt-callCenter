@@ -24,6 +24,9 @@ public class Region {
     @Column
     private String name;
 
+    @Column
+    private int workingHours;
+
     @OneToMany(mappedBy = "region")
     private List<Employee> employees = new ArrayList<>();
 }

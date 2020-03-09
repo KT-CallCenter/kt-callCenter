@@ -12,6 +12,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+
 
 @Configuration
 public class DataBuilder {
@@ -22,7 +26,6 @@ public class DataBuilder {
                                   RegionRepository regionRepository,
                                   LanguageRepository languageRepository) {
         return (args) -> {
-//доделать заполнение базы
             DataReader.getShifts().forEach(shift -> {
                 Shift build = Shift.builder().name(shift).build();
                 shiftRepository.save(build);
@@ -44,6 +47,7 @@ public class DataBuilder {
                 Employee build = Employee.builder().firstName(employee.firstName).lastName(employee.lastName).region(regionSouth).build();
                 employeeRepository.save(build);
             });
+
 
         };
     }

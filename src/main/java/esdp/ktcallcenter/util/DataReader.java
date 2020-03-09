@@ -51,15 +51,15 @@ public final class DataReader {
     private static EmployeeData toEmployee(String fromString) {
         var parts = fromString.split(" ");
         return EmployeeData.builder()
-                .firstName(parts[0])
-                .lastName(parts[1])
+                .lastName(parts[0])
+                .firstName(parts[1])
                 .build();
     }
 
     @Data
     @Builder
     public static class EmployeeData {
-        public String firstName;
         public String lastName;
+        public String firstName;
     }
 }
