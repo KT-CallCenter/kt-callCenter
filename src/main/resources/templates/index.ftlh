@@ -20,7 +20,7 @@
                 <th>Четверг</th>
                 <th>Пятница</th>
                 <th>Суббота</th>
-                <th>Воскресение</th>
+                <th>Воскресенье</th>
             </tr>
             <#if items??>
                 <#list items as item>

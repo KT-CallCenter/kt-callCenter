@@ -11,6 +11,10 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * Оператор - сотрудник для которого делается расписание
+ */
+
 @Data
 @Table(name = "employees")
 @Entity
@@ -50,5 +54,9 @@ public class Employee {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Region region;
+
+    private String status;
+
+    private String location;
 
 }
