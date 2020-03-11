@@ -54,9 +54,9 @@ public class Employee {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Region region;
-
-    private String status;
-
-    private String location;
+//
+//    private String status;
+//
+//    private String location;
 
 }
