@@ -24,6 +24,8 @@ public class Language {
     @Column
     private String name;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(mappedBy = "languages")
     private Set<Employee> employees = new HashSet<>();
 }

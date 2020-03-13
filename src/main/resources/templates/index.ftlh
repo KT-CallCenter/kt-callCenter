@@ -38,8 +38,19 @@
             </#if>
         </table>
         <a href="/generate" class="button">Генерировать</a>
-        <a href="/employees">Добавить сотрудника</a>
+        <a href="/addEmployees">Добавить сотрудника</a>
     </div>
+
+    <#if shifts??>
+        <#list shifts as shift>
+
+            <p> ${shift.name}
+               <#list shift.employees as a>
+                   <p>${a.lastName}</p>
+                </#list>
+
+        </#list>
+    </#if>
 </div>
 </body>
 </html>

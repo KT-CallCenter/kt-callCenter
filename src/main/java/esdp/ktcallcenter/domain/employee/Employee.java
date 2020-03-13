@@ -35,7 +35,8 @@ public class Employee {
     @NotEmpty
     @Column
     private String lastName;
-
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "employee_shift",
@@ -44,6 +45,8 @@ public class Employee {
     )
     private Set<Shift> shifts = new HashSet<>();
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "employee_language",
@@ -52,6 +55,8 @@ public class Employee {
     )
     private Set<Language> languages = new HashSet<>();
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     private Region region;
 //
