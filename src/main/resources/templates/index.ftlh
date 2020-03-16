@@ -11,46 +11,47 @@
 <body>
 <div class="container">
     <div class="generator">
-        <table>
-            <tr>
-                <th>Сотрудник</th>
-                <th>Понедельник</th>
-                <th>Вторник</th>
-                <th>Среда</th>
-                <th>Четверг</th>
-                <th>Пятница</th>
-                <th>Суббота</th>
-                <th>Воскресенье</th>
-            </tr>
-            <#if items??>
-                <#list items as item>
-                    <tr>
-                        <td>${item.firstName} ${item.lastName}</td>
-                        <td>${item.shift}</td>
-                        <td>${item.shift}</td>
-                        <td>${item.shift}</td>
-                        <td>${item.shift}</td>
-                        <td>${item.shift}</td>
-                        <td>${item.shift}</td>
-                        <td>${item.shift}</td>
-                    </tr>
-                </#list>
-            </#if>
-        </table>
-        <a href="/generate" class="button">Генерировать</a>
+<#--        <a href="/generate" class="button">Генерировать</a>-->
         <a href="/addEmployees">Добавить сотрудника</a>
-    </div>
+        <form method="get" action="/generator">
+            <button type="submit">Генерировать</button>
 
-    <#if shifts??>
-        <#list shifts as shift>
+            <table>
+                <tr>
+                    <th>Сотрудник <br> <#if shifts??>
+                            <#list shifts as shift>
 
-            <p> ${shift.name}
-               <#list shift.employees as a>
-                   <p>${a.lastName}</p>
-                </#list>
+                                <p> ${shift.name}
+                                <#list shift.employees as employee>
+                                    <p>${employee.firstName} ${employee.lastName}</p>
+                                </#list>
 
-        </#list>
-    </#if>
-</div>
+                            </#list>
+                        </#if></th>
+                    <#--                <th>Понедельник</th>-->
+                    <#--                <th>Вторник</th>-->
+                    <#--                <th>Среда</th>-->
+                    <#--                <th>Четверг</th>-->
+                    <#--                <th>Пятница</th>-->
+                    <#--                <th>Суббота</th>-->
+                    <#--                <th>Воскресенье</th>-->
+                </tr>
+                <#--            <#if items??>-->
+                <#--                <#list items as item>-->
+                <#--                    <tr>-->
+                <#--                        <td>${item.firstName} ${item.lastName}</td>-->
+                <#--                        <td>${item.shift}</td>-->
+                <#--                        <td>${item.shift}</td>-->
+                <#--                        <td>${item.shift}</td>-->
+                <#--                        <td>${item.shift}</td>-->
+                <#--                        <td>${item.shift}</td>-->
+                <#--                        <td>${item.shift}</td>-->
+                <#--                        <td>${item.shift}</td>-->
+                <#--                    </tr>-->
+                <#--                </#list>-->
+                <#--            </#if>-->
+            </table>
+        </form>
+
 </body>
 </html>

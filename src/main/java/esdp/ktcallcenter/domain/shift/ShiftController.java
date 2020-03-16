@@ -14,9 +14,9 @@ import java.util.List;
 
 public class ShiftController {
 private final ShiftService shiftService;
-    @GetMapping("/")
+    @GetMapping("/generator")
     public String shift(Model model) {
-        List<Shift> shifts = shiftService.addEmployeesWithShift();
+        List<ShiftDTO> shifts = shiftService.addEmployeesWithShift();
         model.addAttribute("shifts", shifts);
         return "index";
     }
