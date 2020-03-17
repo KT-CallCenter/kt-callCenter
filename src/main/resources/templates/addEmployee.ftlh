@@ -8,9 +8,9 @@
     <title>add</title>
 </head>
 <body>
-<form action="/employees/add" method="post">
-    <input type="text" name="firstName" placeholder="firstName">
-    <input type="text" name="lastName" placeholder="lastName">
+<form action="/addEmployees/form" method="post">
+    <input type="text" name="firstName" placeholder="Введите имя">
+    <input type="text" name="lastName" placeholder="Введите фамилию">
 
 <#--    <#if items??>-->
 
@@ -40,14 +40,20 @@
 <div>
     <#if errors?? >
         <p>Входные данные с ошибками!</p>
+        <p>Заполните все поля!</p>
         <#list errors as fieldError>
             <p>${fieldError.field} - ${fieldError.defaultMessage!'-- no message --'}</p>
         </#list>
     </#if>
 </div>
 <div>
-    <#if err?? >
-        <p>${err}</p>
+    <#if addEmployee?? >
+        <p>${addEmployee}</p>
+    </#if>
+</div>
+<div>
+    <#if errorsExist?? >
+        <p>${errorsExist}</p>
     </#if>
 </div>
 

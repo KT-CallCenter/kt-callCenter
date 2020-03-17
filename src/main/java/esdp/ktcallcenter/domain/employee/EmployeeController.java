@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/employees")
+@RequestMapping("/addEmployees")
 @AllArgsConstructor
 public class EmployeeController {
     private final EmployeeService employeeService;
@@ -23,7 +23,7 @@ public class EmployeeController {
     }
 
 
-    @PostMapping("/add")
+    @PostMapping("/form")
     public String addEmployee(@Valid EmployeeRegisterForm employee,
                               BindingResult validationResult,
                               RedirectAttributes attributes){
@@ -31,18 +31,21 @@ public class EmployeeController {
 
         if (validationResult.hasFieldErrors()) {
             attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
-            return "redirect:/employees";
+            return "redirect:/addEmployees";
         }
         try {
             employeeService.addEmployee(employee.getFirstName(),employee.getLastName());
+            String message1 = "оператор добавлен ";
+            attributes.addFlashAttribute("addEmployee", message1);
         }catch (EmployeeAlreadyExistException e){
             String message = "Такой оператор с такими данными есть";
 //            e.getMessage(message);
-            attributes.addFlashAttribute("err", message);
-            return "redirect:/employees";
+            attributes.addFlashAttribute("errorsExist", message);
+
+            return "redirect:/addEmployees";
         }
 
-        return "redirect:/employees";
+        return "redirect:/addEmployees";
     }
 
 }
